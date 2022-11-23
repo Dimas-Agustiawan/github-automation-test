@@ -30,7 +30,7 @@ public class CreateRepository extends browser {
     }
 
     @And("^User input nama repository (.*)$")
-    public void userInputNamaRepository(String nameRepository) {
+    public void userInputNamaRepositgory(String nameRepository) {
         cr.inputRepo(nameRepository);
     }
 
