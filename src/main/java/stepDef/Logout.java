@@ -1,5 +1,6 @@
 package stepDef;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,12 +8,15 @@ import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 import pages.browser;
 import pages.login;
+import pages.logout;
+
 import java.util.concurrent.TimeUnit;
 
 public class Logout extends browser {
     login lg = PageFactory.initElements(driver, login.class);
+    logout lt = PageFactory.initElements(driver, logout.class);
 
-    @Given("Buka browser")
+    @Given("User logout")
     public void bukaBrowser() {
         loginGithub();
     }
@@ -25,13 +29,31 @@ public class Logout extends browser {
     }
 
     @When("User tidak melakukan aktivitas selama {int} menit")
-    public void userTidakMelakukanAktivitasSelamaMenit(int arg0) {
-        driver.manage().timeouts().implicitlyWait(arg0, TimeUnit.MINUTES);
+    public void userTidakMelakukanAktivitasSelamaMenit(int waktu) {
+        driver.manage().timeouts().implicitlyWait(waktu, TimeUnit.MINUTES);
     }
 
     @Then("Akun akan logout otomatis")
     public void akunAkanLogoutOtomatis() {
         String url = driver.getCurrentUrl();
-        Assert.assertEquals("https://github.com/", url);
+        Assert.assertEquals("https://github.com/login", url);
+    }
+
+    @And("User image akun github")
+    public void userImageAkunGithub() {
+        lt.clickImg();
+    }
+
+    @And("Klik dropdown logout")
+    public void klikDropdownLogout() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        lt.clickLogout();
+    }
+
+    @Then("Menampilkan halaman dashboard")
+    public void menampilkanHalamanDashboard() {
+        String title = driver.getTitle();
+        System.out.println(title);
+        Assert.assertEquals("GitHub: Let’s build from here · GitHub", title);
     }
 }

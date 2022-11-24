@@ -5,7 +5,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 import pages.browser;
 import pages.login;
@@ -19,15 +18,16 @@ public class Search extends browser {
         loginGithub();
         src = PageFactory.initElements(driver, search.class);
         lg = PageFactory.initElements(driver, login.class);
-        lg.inputEmail("dimasagustiawan30@gmail.com");
-        lg.inputPass("Kuningan09081999");
-        lg.clickBtnLogin();
-//        driver.findElement(By.id("login_field")).sendKeys("dimasagustiawan30@gmail.com");
-//        driver.findElement(By.id("password")).sendKeys("Kuningan09081999");
-//        driver.findElement(By.name("commit")).click();
     }
 
-    @When("^User mengetikan (.*)$")
+    @When("^User login (.*) dan (.*)$")
+    public void userLoginEmailDanPassword(String email, String pass) {
+        lg.inputEmail(email);
+        lg.inputPass(pass);
+        lg.clickBtnLogin();
+    }
+
+    @And("^User mengetikan (.*)$")
     public void userMengetikanNamaRepository(String nameRepository) {
         src.inputCari(nameRepository);
     }
@@ -37,15 +37,9 @@ public class Search extends browser {
         src.enterCari();
     }
 
-    @Then("Menemukan link menuju ke dalam repository")
-    public void menemukanLinkMenujuKeDalamRepository() {
-        src.clickLinkHasil();
+    @Then("^Menemukan (.*) yang dicari$")
+    public void menemukanRepositoryYangDicari(String nameRepository) {
+        src.clickLinkHasil(nameRepository);
         src.displayRepo();
-        String title = driver.getTitle();
-        String url = driver.getCurrentUrl();
-        System.out.println(title);
-        System.out.println(url);
-
-        Assert.assertEquals("Search · Dimas-Agustiawan/peminjaman-buku", title);
     }
 }

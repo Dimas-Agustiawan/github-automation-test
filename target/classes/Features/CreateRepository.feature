@@ -42,7 +42,7 @@ Feature: Create Repository
    And Access repository private
   Examples:
     | email | password | nama repository |
-    | dimasagustiawan30@gmail.com | Kuningan09081999 | peminjaman-buku |
+    | dimasagustiawan30@gmail.com | Kuningan09081999 | private2 |
 
  Scenario Outline: Membuat repository yang sudah ada (private)
    Given User membuat repository
@@ -53,4 +53,4 @@ Feature: Create Repository
    Then Menampilakan pesan repository sudah ada
   Examples:
     | email | password | nama repository |
-    | dimasagustiawan30@gmail.com | Kuningan09081999 | peminjaman-buku |
+    | dimasagustiawan30@gmail.com | Kuningan09081999 | private2 |

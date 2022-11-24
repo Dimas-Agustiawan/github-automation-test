@@ -1,9 +1,10 @@
 Feature: Search
  Scenario Outline: Cari repository yang telah dibuat
     Given Cari repository
-    When User mengetikan <nama repository>
+    When User login <email> dan <password>
+    And User mengetikan <nama repository>
     And User menekan tombol enter
-    Then Menemukan link menuju ke dalam repository
+    Then Menemukan link menuju ke dalam <nama repository>
    Examples:
-     | nama repository |
-     | Dimas-Agustiawan/peminjaman-buku |
+     | email | password | nama repository |
+     | dimasagustiawan30@gmail.com | Kuningan09081999 | Dimas-Agustiawan/peminjaman-buku |

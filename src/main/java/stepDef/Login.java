@@ -35,7 +35,6 @@ public class Login extends browser {
 
     @Then("Menampilkan halaman awal github")
     public void menampilkanHalamanAwalGithub() {
-//        driver.findElement(By.xpath("/html/body/div[1]/header/div[7]/details/summary/img")).isDisplayed();
         lg.displayHome();
     }
 
