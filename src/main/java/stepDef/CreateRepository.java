@@ -56,11 +56,6 @@ public class CreateRepository extends browser {
         cr.displayFailRepo();
     }
 
-    @Then("Menampilakan pesan repository sudah ada")
-    public void menampilakanPesanRepositorySudahAda() {
-        cr.displayRepoSudahAda();
-    }
-
     @And("User mengklik radio button private")
     public void userMengklikRadioButtonPrivate() {
         cr.checkedAccessPrivate();

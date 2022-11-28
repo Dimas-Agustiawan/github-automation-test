@@ -13,24 +13,25 @@ import pages.logout;
 import java.util.concurrent.TimeUnit;
 
 public class Logout extends browser {
-    login lg = PageFactory.initElements(driver, login.class);
+    login lg;
     logout lt = PageFactory.initElements(driver, logout.class);
 
     @Given("User logout")
     public void bukaBrowser() {
+        lg = PageFactory.initElements(driver, login.class);
         loginGithub();
     }
 
-    @When("^User login dengan (.*) dan (.*)$")
+    @When("^Login dengan (.*) dan (.*)$")
     public void userMelakukanLogin(String email, String pass) {
         lg.inputEmail(email);
         lg.inputPass(pass);
         lg.clickBtnLogin();
     }
 
-    @When("User tidak melakukan aktivitas selama {int} menit")
-    public void userTidakMelakukanAktivitasSelamaMenit(int waktu) {
-        driver.manage().timeouts().implicitlyWait(waktu, TimeUnit.MINUTES);
+    @And("User tidak melakukan aktivitas selama {int} menit")
+    public void userTidakMelakukanAktivitasSelamaMenit(int waktu) throws InterruptedException {
+        Thread.sleep(3600000);
     }
 
     @Then("Akun akan logout otomatis")

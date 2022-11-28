@@ -27,7 +27,7 @@ Feature: Create Repository
    And User input nama repository <nama repository>
    And User mengklik radio button public
    And User mengklik button create repository
-   Then Menampilakan pesan repository sudah ada
+   Then Menampilkan pesan repository creation failed
   Examples:
     | email | password | nama repository |
     | dimasagustiawan30@gmail.com | Kuningan09081999 | peminjaman-buku |
@@ -50,7 +50,7 @@ Feature: Create Repository
    And User input nama repository <nama repository>
    And User mengklik radio button private
    And User mengklik button create repository
-   Then Menampilakan pesan repository sudah ada
+   Then Menampilkan pesan repository creation failed
   Examples:
     | email | password | nama repository |
     | dimasagustiawan30@gmail.com | Kuningan09081999 | private2 |

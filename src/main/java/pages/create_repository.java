@@ -64,13 +64,6 @@ public class create_repository {
         Assert.assertEquals("Repository creation failed.", nameRepoRequired);
     }
 
-    public void displayRepoSudahAda() {
-        String repoSudahAda = failedRepo.getText();
-        System.out.println(repoSudahAda);
-        failedRepo.isDisplayed();
-        Assert.assertEquals("Repository already exist", repoSudahAda);
-    }
-
     public void getAccessRepoPublic() {
         String acsRepoPublic = accessRepoPublic.getText();
         System.out.println(acsRepoPublic);

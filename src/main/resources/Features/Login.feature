@@ -12,15 +12,15 @@ Feature: Login
   Scenario: User tidak input email dan password
     Given User login ke github
     When User klik button sign in
-    Then Menampilkan pesan email harus terisi
-    And Menampilkan pesan password harus terisi
+    Then Menampilkan pesan email required
+    And Menampilkan pesan password required
 
  Scenario Outline: User melakukan login dengan salah
     Given User login ke github
     When User input email <email>
     And User input password <password>
     And User klik button sign in
-    Then Menampilkan pesan email atau password salah
+    Then Menampilkan pesan Incorrect username or password
    Examples:
      | email | password |
      | dimasagustiawan30@gmail.com | Kuningan001999 |

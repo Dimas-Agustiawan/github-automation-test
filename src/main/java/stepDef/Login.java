@@ -38,21 +38,21 @@ public class Login extends browser {
         lg.displayHome();
     }
 
-    @Then("Menampilkan pesan email harus terisi")
+    @Then("Menampilkan pesan email required")
     public void menampilkanPesanEmailHarusTerisi() {
         String email = driver.findElement(By.className("js-flash-alert")).getText();
         lg.pesanPeringatan();
         Assert.assertEquals("email required", email);
     }
 
-    @And("Menampilkan pesan password harus terisi")
+    @And("Menampilkan pesan password required")
     public void menampilkanPesanPasswordHarusTerisi() {
         String pass = driver.findElement(By.className("js-flash-alert")).getText();
         lg.pesanPeringatan();
         Assert.assertEquals("password required", pass);
     }
 
-    @Then("Menampilkan pesan email atau password salah")
+    @Then("Menampilkan pesan Incorrect username or password")
     public void menampilkanPesanEmailAtauPasswordSalah() {
         String incorrect = driver.findElement(By.className("js-flash-alert")).getText();
         lg.pesanPeringatan();
